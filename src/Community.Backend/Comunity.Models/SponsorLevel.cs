@@ -1,0 +1,23 @@
+﻿using Comunity.Models.Base;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Comunity.Models
+{
+    public class SponsorLevel:BaseModel
+    {
+        /// <summary>
+        /// Gets or sets the name.
+        /// Such as Platinum
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the rank.
+        /// 0 means show this sponsor level at top
+        /// </summary>
+        /// <value>The rank.</value>
+        public int Rank { get; set; }
+    }
+}

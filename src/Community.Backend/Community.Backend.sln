@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.Backend", "Community.Backend\Community.Backend.csproj", "{D6D9F1AB-06B7-4A66-8D09-8BCD1B5449CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Community.Backend", "Community.Backend\Community.Backend.csproj", "{D6D9F1AB-06B7-4A66-8D09-8BCD1B5449CD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Comunity.Models", "Comunity.Models\Comunity.Models.shproj", "{1B45D163-F5C2-46D7-8C92-AF2BD6F08F54}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Comunity.Models\Comunity.Models.projitems*{1b45d163-f5c2-46d7-8c92-af2bd6f08f54}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
