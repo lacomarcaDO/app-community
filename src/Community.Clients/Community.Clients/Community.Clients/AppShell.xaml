@@ -5,15 +5,22 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:Community.Clients.Views"
-       Title="Community.Clients"
+       Shell.FlyoutBehavior="Disabled"
+       Title="La Comarca"
        x:Class="Community.Clients.AppShell">
 
+    <Shell.TitleView>
+        <Image Source="share_icon.png"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </Shell.TitleView>
     <!-- 
         Styles and Resources 
     -->
+   
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="NavigationPrimary">#7635EB</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
@@ -31,10 +38,16 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Browse" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <Tab Title="Principal" Icon="home_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}"/>
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
+        <Tab Title="Blog" Icon="blog_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:BlogPage}" />
+        </Tab>
+        <Tab Title="Eventos" Icon="calendar_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:EventsPage}" />
+        </Tab>
+        <Tab Title="Info" Icon="info_icon.png">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
         </Tab>
     </TabBar>
