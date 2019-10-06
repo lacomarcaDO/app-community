@@ -19,9 +19,13 @@ namespace Community.Clients.Views
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+           this.viewModel = viewModel;
         }
-
+         
+        public void OnAperring()
+        {
+            BindingContext = viewModel;
+        }
         public ItemDetailPage()
         {
             InitializeComponent();
@@ -33,7 +37,6 @@ namespace Community.Clients.Views
             };
 
             viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
         }
     }
 }
