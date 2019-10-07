@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8851780a-1c7c-4760-ac19-1af6f96ac65c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Community.DataObjets</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BaseDataObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Category.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Favorite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FeaturedEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Feedback.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MiniHack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Notification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Room.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Session.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Speaker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sponsor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SponsorLevel.cs" />
+  </ItemGroup>
+</Project>
