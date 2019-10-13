@@ -14,7 +14,8 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="NavigationPrimary">#6E67AE</Color>
+
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
@@ -32,11 +33,17 @@
 
     <!--  Your Pages  -->
     <TabBar>
-        <Tab Title="Browse" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <Tab Title="Principal" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:NewsPage}" />
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        <Tab Title="Blog" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:BlogPage}" />
+        </Tab>
+        <Tab Title="Eventos" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:EventsPage}" />
+        </Tab>
+        <Tab Title="Info" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:InfoMenuPage}" />
         </Tab>
     </TabBar>
 
