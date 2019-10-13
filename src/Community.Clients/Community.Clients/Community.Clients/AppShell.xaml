@@ -36,13 +36,13 @@
         <Tab Title="Principal" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:NewsPage}" />
         </Tab>
-        <Tab Title="Blog" Icon="tab_about.png">
+        <Tab Title="Blog" Icon="icon_blog.png">
             <ShellContent ContentTemplate="{DataTemplate local:BlogPage}" />
         </Tab>
-        <Tab Title="Eventos" Icon="tab_feed.png">
+        <Tab Title="Eventos" Icon="menu_events.png">
             <ShellContent ContentTemplate="{DataTemplate local:EventsPage}" />
         </Tab>
-        <Tab Title="Info" Icon="tab_about.png">
+        <Tab Title="Info" Icon="menu_info.png">
             <ShellContent ContentTemplate="{DataTemplate local:InfoMenuPage}" />
         </Tab>
     </TabBar>

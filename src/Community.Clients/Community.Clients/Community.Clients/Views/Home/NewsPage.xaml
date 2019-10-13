@@ -8,6 +8,13 @@
     Title="LaComarcaDO"
     mc:Ignorable="d">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="toolbar_share.png" />
+        <ToolbarItem Order="Secondary" Text="Unete a la comunidad" />
+        <ToolbarItem Order="Secondary" Text="Siguenos en las redes" />
+        <ToolbarItem Order="Secondary" Text="Visita nuestra web" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Label
