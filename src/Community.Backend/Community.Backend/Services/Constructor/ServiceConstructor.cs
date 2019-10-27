@@ -48,4 +48,3 @@ namespace Community.Backend.Services.Constructor
         }
     }
 }
-}

@@ -1,4 +1,5 @@
-﻿using Community.Backend.Database.Models.Base;
+﻿using Comunity.Models;
+using Comunity.Models.Base;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

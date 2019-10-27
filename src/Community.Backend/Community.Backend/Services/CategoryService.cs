@@ -39,6 +39,11 @@ namespace Community.Backend.Services
             throw new NotImplementedException();
         }
 
+        public override Task<Result> ValidateOnDelete(object id)
+        {
+            throw new NotImplementedException();
+        }
+
         public override Task<Result> ValidateOnUpdate(Category entity)
         {
             throw new NotImplementedException();
