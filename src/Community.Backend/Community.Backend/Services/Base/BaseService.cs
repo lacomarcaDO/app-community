@@ -102,13 +102,15 @@ namespace Community.Backend.Services.Base
                     {
                         await Repository.Delete(id);
                         await Repository.CommitChanges();
-                        return Result.AddMessage("entity delete successfully");
+                        Result = Result.AddMessage("entity delete successfully");
                     }
                     else
                     {
-                        return Result.AddErrorMessage("").AppendTaskResultData(result);
+                        Result = Result.AddErrorMessage("").AppendTaskResultData(result);
+                         
                     }
                 }
+                return Result;
             }
             catch (Exception ex)
             {
@@ -118,22 +120,94 @@ namespace Community.Backend.Services.Base
 
         public virtual async Task<Result> Delete(Tmodel entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await ValidateOnDelete(entity);
+                if(result.ExecutedSuccesfully){
+                    await Repository.Delete(entity);
+                    await Repository.CommitChanges();
+                    return Result.AddMessage("entity delete successfully");
+                } else {
+                    return Result.AddErrorMessage("").AppendTaskResultData(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result.AddErrorMessage("Error deleting this entity from DB",ex);
+            }
         }
 
         public virtual async Task<Result> DeleteRange(IEnumerable<Tmodel> entities)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = new Result();
+                foreach (var entity in entities)
+                {
+                    result = await ValidateOnDelete(entity);
+                    if(!result.ExecutedSuccesfully){
+                        break;
+                    }
+                }
+                if(result.ExecutedSuccesfully){
+                    await Repository.DeleteRange(entities);
+                    await Repository.CommitChanges();
+                    return Result.AddMessage("Entittes deleted successfully !");
+                } else {
+                    return Result.AddErrorMessage("").AppendTaskResultData(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result.AddErrorMessage("Error on delete the list of entities",ex);
+            }
         }
 
         public virtual async Task<Result> Update(Tmodel entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await ValidateOnUpdate(entity);
+                if(result.ExecutedSuccesfully){
+                    await Repository.Update(entity);
+                    await Repository.CommitChanges();
+                    Result = Result.AddMessage($"{entity.GetType().Name} entity update successfully !");
+                } else {
+                    Result = Result.AddErrorMessage($"").AppendTaskResultData(result);
+                }
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                return Result.AddErrorMessage("",ex);
+            }
         }
 
         public virtual async Task<Result> UpdateRange(IEnumerable<Tmodel> entities)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = new Result();
+                foreach (var entity in entities)
+                {
+                    result = await ValidateOnUpdate(entity);
+                    if(!result.ExecutedSuccesfully){
+                        break;
+                    }
+                }
+                if(!result.ExecutedSuccesfully){
+                    Result = Result.AddErrorMessage($"error when try to eliminate {typeof(Tmodel).Name} entity list").AppendTaskResultData(result);
+                } else {
+                    await Repository.UpdateRange(entities);
+                    await Repository.CommitChanges();
+                    Result = Result.AddMessage($"list of {typeof(Tmodel).Name} entities update succefully !");
+                }
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                return Result.AddErrorMessage($"error when try to update the list of {typeof(Tmodel)} entities in database",ex);
+            }
         }
 
         public abstract Task<Result> ValidateOnCreate(Tmodel entity);

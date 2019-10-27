@@ -27,8 +27,9 @@ namespace Community.Backend.Database.Repositories.Base
         Task Delete(object id);
         Task Delete(Expression<Func<Tmodel, bool>> primaryKeys);
         Task<SqlDataReader> Run(string query);
-        Task DeleteRange(IEnumerable<Tmodel> entity);
-        Task<IEnumerable<Tmodel>> InsertRange(IEnumerable<Tmodel> entity);
+        Task DeleteRange(IEnumerable<Tmodel> entities);
+        Task<IEnumerable<Tmodel>> InsertRange(IEnumerable<Tmodel> entities);
+        Task<IEnumerable<Tmodel>> UpdateRange(IEnumerable<Tmodel> entities);
     }
     public class BaseRepository<Tmodel>:IBaseRepository<Tmodel> where Tmodel:class,IBaseModel
     {
@@ -151,6 +152,18 @@ namespace Community.Backend.Database.Repositories.Base
                 }
             }
             return entity;
+        }
+
+        public virtual async Task<IEnumerable<Tmodel>> UpdateRange(IEnumerable<Tmodel> entities){
+                return await Task.Run(()=>{
+                    var result = new List<Tmodel>();
+                foreach(var entity in entities){
+                    Context.Set<Tmodel>().Attach(entity);
+                    Context.Entry(entity).State = EntityState.Modified;
+                    result.Add(entity);
+                }
+                return result;
+                });
         }
 
         public virtual async Task UpdateProperty<Type>(Expression<Func<Tmodel, Type>> property, Tmodel entity)
