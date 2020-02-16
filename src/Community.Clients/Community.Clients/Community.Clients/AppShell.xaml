@@ -6,6 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:Community.Clients.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i18n="clr-namespace:Community.Clients.Helpers;assembly=Community.Clients"
     Title="Community.Clients"
     mc:Ignorable="d">
 
@@ -33,16 +34,16 @@
 
     <!--  Your Pages  -->
     <TabBar>
-        <Tab Title="Principal" Icon="tab_feed.png">
+        <Tab Title="{i18n:Translate Main}" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:NewsPage}" />
         </Tab>
-        <Tab Title="Blog" Icon="icon_blog.png">
+        <Tab Title="{i18n:Translate Blog}" Icon="icon_blog.png">
             <ShellContent ContentTemplate="{DataTemplate local:BlogPage}" />
         </Tab>
-        <Tab Title="Eventos" Icon="menu_events.png">
+        <Tab Title="{i18n:Translate Events}" Icon="menu_events.png">
             <ShellContent ContentTemplate="{DataTemplate local:EventsPage}" />
         </Tab>
-        <Tab Title="Info" Icon="menu_info.png">
+        <Tab Title="{i18n:Translate Info}" Icon="menu_info.png">
             <ShellContent ContentTemplate="{DataTemplate local:InfoMenuPage}" />
         </Tab>
     </TabBar>

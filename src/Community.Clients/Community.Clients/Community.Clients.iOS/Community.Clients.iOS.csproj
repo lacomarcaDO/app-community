@@ -60,6 +60,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -136,9 +137,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\Community.Utils\Community.Utils.csproj">
+      <Project>{F8FB4A13-8799-4938-ADAC-3161B4ED1FA3}</Project>
+      <Name>Community.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Community.Clients\Community.Clients.csproj">
       <Project>{32417E98-2AC5-44A6-B3FA-80C2CF3C9076}</Project>
       <Name>Community.Clients</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
 </Project>
