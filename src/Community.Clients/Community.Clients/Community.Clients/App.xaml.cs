@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Community.Clients.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Community.Clients.Services;
-using Community.Clients.Views;
 
 namespace Community.Clients
 {
@@ -19,6 +16,7 @@ namespace Community.Clients
         public App()
         {
             InitializeComponent();
+            XF.Material.Forms.Material.Init(this);
 
             if (UseMockDataStore)
                 DependencyService.Register<MockDataStore>();
