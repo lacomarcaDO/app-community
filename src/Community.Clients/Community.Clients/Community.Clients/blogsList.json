@@ -1,0 +1,12 @@
+[
+  {
+    "Page": "https://www.juegosmental.es/",
+    "Type": "blogger",
+    "PostLimit": 10
+  },
+    {
+    "Page": "https://notasti.com/",
+    "Type": "wordpress",
+    "PostLimit": 10
+  }
+]

@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="Community.Clients.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <!-- Parameters -->
+            <x:String x:Key="UrlApi">https://reactions911.azurewebsites.net</x:String>
+
+            <Color x:Key="topbarcolor">black</Color>
+            <Color x:Key="themecolor">#FF7F27</Color>
+            <!--<rssespecial:ContentDataTemplateSelector x:Key="ContentDataTemplateSelector"></rssespecial:ContentDataTemplateSelector>-->
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

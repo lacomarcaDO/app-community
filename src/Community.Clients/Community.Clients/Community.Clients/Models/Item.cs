@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Community.Clients.Models
+﻿namespace Community.Clients.Models
 {
     public class Item
     {

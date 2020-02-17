@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Community.DataStore.Mock": {
+      "commandName": "Project"
+    }
+  }
+}
