@@ -34,9 +34,7 @@ namespace Community.Clients.Helpers
 
             try
             {
-
                 var translation = ResMgr.Value.GetString(Text, ci);
-
 
                 if (translation == null)
                 {
@@ -55,12 +53,8 @@ namespace Community.Clients.Helpers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return "";
             }
-
-            return "";
-
-
         }
     }
 

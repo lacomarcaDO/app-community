@@ -50,25 +50,25 @@ namespace Community.Clients.ViewModels
                 .Where(node => node.GetAttributeValue("class", "")
                     .Equals("post hentry")).ToList();
 
-            Console.WriteLine("total  items  " + blogsList.Count());
+            Console.WriteLine($@"total  items {blogsList.Count()}");
             Console.WriteLine();
 
-            foreach (var ProductListItem in blogsList)
+            foreach (var productListItem in blogsList)
             {
                 var itemModel = new ItemModel();
 
-                var textNodeList = ProductListItem.Descendants("h3").ToList().Where(node => node.GetAttributeValue("class", "")
+                var textNodeList = productListItem.Descendants("h3").ToList().Where(node => node.GetAttributeValue("class", "")
                      .Equals("post-title")).ToList();
 
-                var imgNodeList = ProductListItem.Descendants("img").ToList();
+                var imgNodeList = productListItem.Descendants("img").ToList();
 
-                var contentNodeList = ProductListItem.Descendants("div").ToList().Where(node => node.GetAttributeValue("class", "")
+                var contentNodeList = productListItem.Descendants("div").ToList().Where(node => node.GetAttributeValue("class", "")
                      .Equals("post-body entry-content")).ToList();
 
                 if (textNodeList.Any())
                 {
                     var textNode = textNodeList[0];
-                    var url1 = textNode.Descendants("a").ToList()[0].Attributes["href"].Value; ;// [0].Attributes["href"].Value;
+                    var url1 = textNode.Descendants("a").ToList()[0].Attributes["href"].Value; // [0].Attributes["href"].Value;
                     var title = textNode.Descendants("a").ToList()[0].Attributes["title"].Value;
                     Console.WriteLine(url1);
                     Console.WriteLine(title);
@@ -98,7 +98,7 @@ namespace Community.Clients.ViewModels
 
                 itemModel.From = secondLastItem + "." + lastItem;
                 itemModel.IsBlogger = true;
-                Console.WriteLine(blogsList.IndexOf(ProductListItem));
+                Console.WriteLine(blogsList.IndexOf(productListItem));
                 Console.WriteLine();
 
                 list.Add(itemModel);
@@ -126,21 +126,21 @@ namespace Community.Clients.ViewModels
                 .Where(node => node.GetAttributeValue("class", "")
                     .Equals("article-wrapper list-style clearfix")).ToList();
 
-            Console.WriteLine("total  items  " + blogsList.Count());
+            Console.WriteLine(@"total  items  " + blogsList.Count());
             Console.WriteLine();
-            foreach (var ProductListItem in blogsList)
+            foreach (var productListItem in blogsList)
             {
                 var itemModel = new ItemModel();
 
-                var textNodeList = ProductListItem.Descendants("h1").ToList().Where(node => node.GetAttributeValue("class", "")
+                var textNodeList = productListItem.Descendants("h1").ToList().Where(node => node.GetAttributeValue("class", "")
                      .Equals("entry-title")).ToList();
 
-                var imgNodeList = ProductListItem.Descendants("img").Where(node => node.GetAttributeValue("class", "")
+                var imgNodeList = productListItem.Descendants("img").Where(node => node.GetAttributeValue("class", "")
                 .Equals("img-responsive")).ToList();
 
-                var dateNodeList = ProductListItem.Descendants("div").ToList().Where(s => s.GetAttributeValue("class", "").Equals("entry-date")).ToList();
+                var dateNodeList = productListItem.Descendants("div").ToList().Where(s => s.GetAttributeValue("class", "").Equals("entry-date")).ToList();
 
-                var contentNodeList = ProductListItem.Descendants("p").ToList();//.Where(s => s.GetAttributeValue("class", "").Equals("entry-date")).ToList();
+                var contentNodeList = productListItem.Descendants("p").ToList();//.Where(s => s.GetAttributeValue("class", "").Equals("entry-date")).ToList();
 
                 if (textNodeList.Any())
                 {
@@ -183,7 +183,7 @@ namespace Community.Clients.ViewModels
                 itemModel.From = secondLastItem + "." + lastItem;
                 itemModel.IsBlogger = false;
 
-                Console.WriteLine(blogsList.IndexOf(ProductListItem));
+                Console.WriteLine(blogsList.IndexOf(productListItem));
                 Console.WriteLine();
 
                 list.Add(itemModel);
@@ -202,7 +202,7 @@ namespace Community.Clients.ViewModels
             string jsonFileName = "blogsList.json";
             var assembly = typeof(BlogPage).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonFileName}");
-            using (var reader = new System.IO.StreamReader(stream))
+            using (var reader = new System.IO.StreamReader(stream ?? throw new InvalidOperationException()))
             {
                 var jsonString = reader.ReadToEnd();
                 var jsonList = JsonConvert.DeserializeObject<ObservableCollection<JsonModel>>(jsonString);
@@ -213,22 +213,22 @@ namespace Community.Clients.ViewModels
                     if (item.Type == "blogger")
                     {
                         var list = await GetBloggerListAsync(item.Page);
-                        var ItemsnewList = list.Take(item.PostLimit);
-                        ItemsnewList.ForEach(s => Items.Add(s));
+                        var itemsnewList = list.Take(item.PostLimit);
+                        itemsnewList.ForEach(s => Items.Add(s));
                     }
                     else if (item.Type == "wordpress")
                     {
                         var list = await GetWordpressListAsync(item.Page);
-                        var ItemsnewList = list.Take(item.PostLimit);
-                        ItemsnewList.ForEach(s => Items.Add(s));
+                        var itemsnewList = list.Take(item.PostLimit);
+                        itemsnewList.ForEach(s => Items.Add(s));
                     }
                 }
 
             }
 
-            var ItemsnewListx = Items.OrderBy(p=>p.PostTitle);
+            var itemsnewListx = Items.OrderBy(p=>p.PostTitle);
             Items = new ObservableCollection<ItemModel>();
-            ItemsnewListx.ForEach(s => Items.Add(s));
+            itemsnewListx.ForEach(s => Items.Add(s));
           
             await loader.DismissAsync();
         }
