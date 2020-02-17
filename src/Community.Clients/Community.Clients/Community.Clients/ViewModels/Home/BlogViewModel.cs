@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Community.Clients.Helpers;
+using Community.Clients.Services;
 using Xamarin.Forms.Internals;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -197,6 +198,14 @@ namespace Community.Clients.ViewModels
 
         internal async void Initlize()
         {
+            var _apiService = new ApiService();
+            var url = "google.com";// App.Current.Resources["UrlApi"].ToString();
+            var connection = await _apiService.CheckConnection(url);
+            if (!connection)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.CheckInternet, Languages.Accept);
+                return;
+            }
 
             var loader = await MaterialDialog.Instance.LoadingDialogAsync(Languages.Loading);
             string jsonFileName = "blogsList.json";

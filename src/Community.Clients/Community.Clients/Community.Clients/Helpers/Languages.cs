@@ -35,5 +35,7 @@ namespace Community.Clients.Helpers
 
         public static string Loading => Resource.Loading;
 
+        public static string CheckInternet => Resource.CheckInternet;
+
     }
 }

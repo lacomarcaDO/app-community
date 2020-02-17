@@ -79,6 +79,15 @@ namespace Community.Clients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check the internet connection..
+        /// </summary>
+        internal static string CheckInternet {
+            get {
+                return ResourceManager.GetString("CheckInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {
