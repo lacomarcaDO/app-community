@@ -1,6 +1,5 @@
 ﻿namespace Community.Clients.Models
 {
-
     public class ItemModel
     {
         public string PostTitle { get; set; }

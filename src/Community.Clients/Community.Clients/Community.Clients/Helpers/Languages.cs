@@ -33,5 +33,7 @@ namespace Community.Clients.Helpers
 
         public static string Info => Resource.Info;
 
+        public static string Loading => Resource.Loading;
+
     }
 }

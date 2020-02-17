@@ -13,13 +13,13 @@ namespace Community.Clients.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BlogDetailPage : ContentPage
     {
-        BlogDetailViewModel viewModel = new BlogDetailViewModel();//=> App.Locator.DetailPageViewModel;
+        BlogDetailViewModel viewModel = new BlogDetailViewModel();
 
-        public BlogDetailPage(ItemModel model)//, BlogDetailViewModel viewModel)
+        public BlogDetailPage(ItemModel model)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = this.viewModel;//= viewModel;
+            BindingContext = this.viewModel;
             viewModel.Initilize(model);
         }
 

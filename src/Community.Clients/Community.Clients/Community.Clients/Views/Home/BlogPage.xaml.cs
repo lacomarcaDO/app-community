@@ -8,15 +8,16 @@ namespace Community.Clients.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BlogPage : ContentPage
     {
-        BlogViewModel viewModel ;//= new BlogViewModel();// => App.Locator.HomePageViewModel;
+         BlogViewModel viewModel = new BlogViewModel();// => App.Locator.HomePageViewModel;
+        //BlogViewModel viewModel => App.Locator.BlogViewModel;
 
         public BlogPage()
         {
             InitializeComponent();
-            viewModel = new BlogViewModel();
-            BindingContext = viewModel;
+           // var viewModel = new BlogViewModel();
+            BindingContext = viewModel;// new BlogViewModel();// viewModel;
             viewModel.Initlize();
-            NavigationPage.SetHasNavigationBar(this, false);
+          //  NavigationPage.SetHasNavigationBar(this, false);
             //MyLabel.Text = " <b>&nbsp;No te olvides de comentar nuevamente y compartirlo con tus amigos desafiandolos con el HashTag #JsMentales</b>";
             //MyLabel.TextType = TextType.Html;
         }

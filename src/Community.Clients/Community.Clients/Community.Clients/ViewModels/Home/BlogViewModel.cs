@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using Community.Clients.Helpers;
 using Xamarin.Forms.Internals;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -20,8 +21,16 @@ namespace Community.Clients.ViewModels
         private ObservableCollection<ItemModel> _items;
         public ObservableCollection<ItemModel> Items
         {
-            get { return _items; }
-            set { SetProperty(ref _items, value); }
+            get => _items;
+            set => SetProperty(ref _items, value);
+        }
+
+        private ItemModel _selectedItem;
+
+        public ItemModel SelectedItem
+        {
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value);
         }
 
         private async Task<List<ItemModel>> GetBloggerListAsync(string url)
@@ -43,8 +52,6 @@ namespace Community.Clients.ViewModels
 
             Console.WriteLine("total  items  " + blogsList.Count());
             Console.WriteLine();
-
-
 
             foreach (var ProductListItem in blogsList)
             {
@@ -184,10 +191,14 @@ namespace Community.Clients.ViewModels
             return list;
         }
 
+        public BlogViewModel()
+        {
+        }
+
         internal async void Initlize()
         {
 
-            var loader = await MaterialDialog.Instance.LoadingDialogAsync("Loading..");
+            var loader = await MaterialDialog.Instance.LoadingDialogAsync(Languages.Loading);
             string jsonFileName = "blogsList.json";
             var assembly = typeof(BlogPage).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonFileName}");
@@ -215,6 +226,10 @@ namespace Community.Clients.ViewModels
 
             }
 
+            var ItemsnewListx = Items.OrderBy(p=>p.PostTitle);
+            Items = new ObservableCollection<ItemModel>();
+            ItemsnewListx.ForEach(s => Items.Add(s));
+          
             await loader.DismissAsync();
         }
 

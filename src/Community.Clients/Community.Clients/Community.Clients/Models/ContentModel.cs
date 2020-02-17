@@ -12,8 +12,8 @@ namespace Community.Clients.Models
 
         public FontAttributes FontAttributes
         {
-            get { return _fontAttributes; }
-            set { SetProperty(ref _fontAttributes, value); }
+            get => _fontAttributes;
+            set => SetProperty(ref _fontAttributes, value);
         }
     }
 }

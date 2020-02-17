@@ -51,11 +51,11 @@ namespace Community.Clients.ViewModels.Home
             var title = postHtml[0].Descendants().Where(node => node.GetAttributeValue("class", "").Equals("post-title")).ToList()[0].InnerText.Trim('\r', '\n', '\t');
             Console.WriteLine(title);
 
-            var innerHTML = postHtml[0].Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("post-body entry-content")).ToList()[0].Descendants().ToList();//[0].Descendants().ToList();
+            var innerHtml = postHtml[0].Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("post-body entry-content")).ToList()[0].Descendants().ToList();//[0].Descendants().ToList();
 
-            foreach (var item in innerHTML)
+            foreach (var item in innerHtml)
             {
-                var index = innerHTML.IndexOf(item);
+                var index = innerHtml.IndexOf(item);
                 if (index == 83)
                 {
 
@@ -66,12 +66,12 @@ namespace Community.Clients.ViewModels.Home
                     {
                         if (item.ParentNode.Name == "b")
                         {
-                            Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {item.ParentNode.InnerHtml}");
+                            Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {item.ParentNode.InnerHtml}");
                             contentList.Add(new ContentModel() { IsImage = false, Text = item.InnerHtml, FontAttributes = FontAttributes.Bold });
                         }
                         else
                         {
-                            Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {item.InnerHtml}");
+                            Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {item.InnerHtml}");
                             contentList.Add(new ContentModel() { IsImage = false, Text = item.InnerHtml });
                         }
                     }
@@ -80,7 +80,7 @@ namespace Community.Clients.ViewModels.Home
                 {
                     var urll = item.Attributes["src"].Value;
 
-                    Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {urll}");
+                    Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {urll}");
                     contentList.Add(new ContentModel() { IsImage = true, Text = urll });
 
                     var list = item.Descendants().ToList();
@@ -105,9 +105,9 @@ namespace Community.Clients.ViewModels.Home
             //var title = postHtml[0].Descendants().Where(node => node.GetAttributeValue("class", "").Equals("entry-title")).ToList()[0].InnerText.Trim('\r', '\n', '\t');//  [0].InnerText.Trim('\r', '\n', '\t');
             //Console.WriteLine(title);
 
-            var innerHTML = postHtml[0].Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("entry-content")).ToList()[0].Descendants().ToList();//[0].Descendants().ToList();
+            var innerHtml = postHtml[0].Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("entry-content")).ToList()[0].Descendants().ToList();//[0].Descendants().ToList();
 
-            foreach (var item in innerHTML)
+            foreach (var item in innerHtml)
             {
                 //var urll = item.Attributes["src"].Value;
 
@@ -126,12 +126,12 @@ namespace Community.Clients.ViewModels.Home
                     {
                         if (item.ParentNode.Name == "b")
                         {
-                            Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {item.ParentNode.InnerHtml}");
+                            Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {item.ParentNode.InnerHtml}");
                             contentList.Add(new ContentModel() { IsImage = false, Text = item.InnerHtml, FontAttributes = FontAttributes.Bold });
                         }
                         else
                         {
-                            Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {item.InnerHtml}");
+                            Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {item.InnerHtml}");
                             contentList.Add(new ContentModel() { IsImage = false, Text = item.InnerHtml });
                         }
                     }
@@ -144,7 +144,7 @@ namespace Community.Clients.ViewModels.Home
                     //   urll= urll.Split('?')[0];
                     //}
 
-                    Console.WriteLine($"{innerHTML.IndexOf(item)} | {item.Name} | {urll}");
+                    Console.WriteLine($@"{innerHtml.IndexOf(item)} | {item.Name} | {urll}");
                     contentList.Add(new ContentModel() { IsImage = true, Text = urll });
 
                 }

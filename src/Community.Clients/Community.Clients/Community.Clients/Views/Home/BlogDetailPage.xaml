@@ -24,9 +24,9 @@
                 <StackLayout Margin="10">
                     <Label Text="{Binding Text}" TextColor="White"
                            FontAttributes="{Binding FontAttributes}"></Label>
-                    <!--<Label Text="{Binding Text}" TextColor="White"
+                    <Label Text="{Binding Text}" TextColor="White"
                            TextType="Html"
-                           FontAttributes="{Binding FontAttributes}"></Label>-->
+                           FontAttributes="{Binding FontAttributes}"></Label>
                 </StackLayout>
             </DataTemplate>
 

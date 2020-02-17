@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CommonServiceLocator;
+﻿using Community.Clients.ViewModels;
+using Community.Clients.ViewModels.Home;
+
 namespace Community.Clients.Locator
 {
     public class ViewModelLocator
     {
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            SimpleIoc.Default.Register<HomePageViewModel>();
-            SimpleIoc.Default.Register<DetailPageViewModel>();
+            //  ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            //SimpleIoc.Default.Register<BlogViewModel>();
+            //    SimpleIoc.Default.Register<BlogDetailViewModel>();
         }
-        public HomePageViewModel HomePageViewModel => ServiceLocator.Current.GetInstance<HomePageViewModel>();
-        public DetailPageViewModel DetailPageViewModel => ServiceLocator.Current.GetInstance<DetailPageViewModel>();
+        public BlogViewModel BlogViewModel => new BlogViewModel();
+        public BlogDetailViewModel BlogDetailViewModel => new BlogDetailViewModel();
+        //public BlogViewModel BlogViewModel => ServiceLocator.Current.GetInstance<BlogViewModel>();
+        //public BlogDetailViewModel BlogDetailViewModel => ServiceLocator.Current.GetInstance<BlogDetailViewModel>();
     }
 }
