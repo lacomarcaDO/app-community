@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Community.Clients.Views.BlogDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i18n="clr-namespace:Community.Clients.Helpers;assembly=Community.Clients"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:clients="clr-namespace:Community.Clients;assembly=Community.Clients"
+    Title="{i18n:Translate LaComarcaDo}"
+    mc:Ignorable="d">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="toolbar_share.png" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate JoinToCommunity}"/>
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate FollowUs}" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate VisitOurWeb}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TextDataTemplate">
+                <StackLayout Margin="10">
+                    <Label Text="{Binding Text}" TextColor="White"
+                           FontAttributes="{Binding FontAttributes}"></Label>
+                    <Label Text="{Binding Text}" TextColor="White"
+                           TextType="Html"
+                           FontAttributes="{Binding FontAttributes}"></Label>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ImageDataTemplate">
+                <StackLayout Margin="10">
+                    <ff:CachedImage Source="{Binding Text}" HeightRequest="200"
+                                    Aspect="AspectFill"></ff:CachedImage>
+                </StackLayout>
+            </DataTemplate>
+
+            <clients:ContentDataTemplateSelector x:Key="ContentDataTemplateSelector"
+                                                     TextDataTemplate="{StaticResource TextDataTemplate}"
+                                                     ImageDataTemplate="{StaticResource ImageDataTemplate}"/>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>                <RowDefinition Height="10*"/>                <RowDefinition Height="100*"/>            </Grid.RowDefinitions>            <Grid Grid.Row="0" BackgroundColor="{StaticResource topbarcolor}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>                <Grid.ColumnDefinitions>                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>                <Image Grid.Row="0" Grid.Column="0"  Source="RoundImage.png"                           Aspect="AspectFit"  Margin="5,5,0,0" HorizontalOptions="Start"/>                <Label Grid.Row="0" Grid.Column="0" Text="Post Detail "                           TextColor="{StaticResource themecolor}" FontSize="20"                            VerticalTextAlignment="Center" HorizontalTextAlignment="Center"                            HorizontalOptions="CenterAndExpand"  />                <BoxView Grid.Row="1"  BackgroundColor="{StaticResource themecolor}" HeightRequest="1" />            </Grid>
+            <Grid Grid.Row="1" BackgroundColor="{StaticResource topbarcolor}">
+                <ScrollView>
+                    <StackLayout>
+
+                        <Grid Margin="20,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Spacing="0">
+                                <Label >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding ItemModel.PostTitle}"  TextColor="{StaticResource themecolor}" FontSize="15"
+                                                              FontAttributes="Bold"></Span>
+                                            <Span Text=" "  TextColor="{StaticResource themecolor}" FontSize="15"></Span>
+                                            <Span Text="{Binding ItemModel.From}"  TextColor="Yellow" ></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Text="{Binding ItemModel.Date}"
+                                                   TextColor="LightSkyBlue"/>
+                            </StackLayout>
+
+
+                            <Button Grid.Row="0" Grid.Column="1"  Text="Go to original"
+                                    Command="{Binding GoBrowserCommand}" VerticalOptions="Start"
+                                    BackgroundColor="Transparent" TextColor="Yellow"/>
+
+                        </Grid>
+
+                        <StackLayout BindableLayout.ItemsSource="{Binding ContentItems}"  
+                                         BindableLayout.ItemTemplateSelector="{StaticResource ContentDataTemplateSelector}">
+                            <!--<BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Margin="10">
+                                            <Label Text="{Binding Text}" TextColor="White" TextType="Html"></Label>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>-->
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

@@ -5,23 +5,48 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="LaComarcaDO"
+    xmlns:i18n="clr-namespace:Community.Clients.Helpers;assembly=Community.Clients"
+    Title="{i18n:Translate LaComarcaDo}"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="toolbar_share.png" />
-        <ToolbarItem Order="Secondary" Text="Unete a la comunidad" />
-        <ToolbarItem Order="Secondary" Text="Siguenos en las redes" />
-        <ToolbarItem Order="Secondary" Text="Visita nuestra web" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate JoinToCommunity}"/>
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate FollowUs}" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate VisitOurWeb}" />
     </ContentPage.ToolbarItems>
+    <ListView 
+        ItemsSource="{Binding Items}"
+        SelectedItem="{Binding SelectedItem}"
+        CachingStrategy="RecycleElement"
+        RowHeight="60">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+                    <StackLayout  Orientation="Vertical">
+                        <StackLayout  Orientation="Horizontal">
 
+                            <Image Source="{Binding Image}"
+                                   WidthRequest="100"
+                                   HeightRequest="100">
+                            </Image>
+
+                            <Label Text="{Binding Date}"
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding PostTitle}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <!--<ListView.Behaviors>
+            <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding NavigateCommand}" />
+        </ListView.Behaviors>-->
+
+    </ListView>
+   
 </ContentPage>

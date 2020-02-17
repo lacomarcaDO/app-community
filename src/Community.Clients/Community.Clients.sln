@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{1189
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Community.DataObjets", "Community.DataObjets\Community.DataObjets.shproj", "{8851780A-1C7C-4760-AC19-1AF6F96AC65C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.DataStore.Abstractions", "Community.DataStore.Abstractions\Community.DataStore.Abstractions.csproj", "{B4797D5C-BF2E-4F5C-B9EE-2A63A644819E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Community.DataStore.Abstractions", "Community.DataStore.Abstractions\Community.DataStore.Abstractions.csproj", "{B4797D5C-BF2E-4F5C-B9EE-2A63A644819E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.DataStore.Mock", "Community.DataStore.Mock\Community.DataStore.Mock.csproj", "{2B5F317D-7D1C-4EE5-942D-42D5C0F14128}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Community.DataStore.Mock", "Community.DataStore.Mock\Community.DataStore.Mock.csproj", "{2B5F317D-7D1C-4EE5-942D-42D5C0F14128}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.Utils", "Community.Utils\Community.Utils.csproj", "{F8FB4A13-8799-4938-ADAC-3161B4ED1FA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Community.Utils", "Community.Utils\Community.Utils.csproj", "{F8FB4A13-8799-4938-ADAC-3161B4ED1FA3}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -132,6 +132,7 @@ Global
 		{2B5F317D-7D1C-4EE5-942D-42D5C0F14128} = {1189B47C-E7B3-46DE-9ABF-0E94D56D6B69}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_PrefixTranslations = False
 		SolutionGuid = {5B22147A-A8EE-4B94-AAFB-559E974C1E1E}
 	EndGlobalSection
 EndGlobal

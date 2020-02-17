@@ -5,14 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="LaComarcaDO"
+    xmlns:i18n="clr-namespace:Community.Clients.Helpers;assembly=Community.Clients"
+    Title="{i18n:Translate LaComarcaDo}"
     mc:Ignorable="d">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="toolbar_share.png" />
-        <ToolbarItem Order="Secondary" Text="Unete a la comunidad" />
-        <ToolbarItem Order="Secondary" Text="Siguenos en las redes" />
-        <ToolbarItem Order="Secondary" Text="Visita nuestra web" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate JoinToCommunity}"/>
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate FollowUs}" />
+        <ToolbarItem Order="Secondary" Text="{i18n:Translate VisitOurWeb}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
